@@ -1,4 +1,4 @@
-package com.test.battleship.util;
+package com.test.dsa.util;
 
 class Program {
     public static LinkedList invertedBisection(LinkedList head) {

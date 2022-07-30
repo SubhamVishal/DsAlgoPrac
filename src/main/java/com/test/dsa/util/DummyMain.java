@@ -1,4 +1,4 @@
-package com.test.battleship.util;
+package com.test.dsa.util;
 
 public class DummyMain {
     private static int solve(int m, int n) {
