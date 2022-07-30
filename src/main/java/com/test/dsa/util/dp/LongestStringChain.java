@@ -19,7 +19,8 @@ public class LongestStringChain {
             this.maxChainLength = maxChainLength;
         }
     }
-
+    // O(n * m^2 + nlog(n)) time | O(nm) space where n is the number of strings
+    // and m is the length of the longest string
     public static List<String> longestStringChain(List<String> strings) {
         Map<String, StringChain> stringChains = new HashMap<>();
         for (String string : strings) {
