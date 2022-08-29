@@ -23,18 +23,18 @@ public class MinCostConnectedPointsPrims {
             }
         }
         int result = 0;
-        Set<Integer> visited = new HashSet<>();
+        Set<Integer> visitedVertex = new HashSet<>();
         PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(edge -> edge.weight));
         pq.add(new Edge(0, 0));
-        while (visited.size() < n) {
+        while (visitedVertex.size() < n) {
             Edge edge = pq.poll();
-            if (edge == null || visited.contains(edge.toIndex)) {
+            if (edge == null || visitedVertex.contains(edge.toIndex)) {
                 continue;
             }
             result += edge.weight;
-            visited.add(edge.toIndex);
+            visitedVertex.add(edge.toIndex);
             for (Edge neighbor : adj.get(edge.toIndex)) {
-                if (!visited.contains(neighbor.toIndex)) {
+                if (!visitedVertex.contains(neighbor.toIndex)) {
                     pq.add(neighbor);
                 }
             }
