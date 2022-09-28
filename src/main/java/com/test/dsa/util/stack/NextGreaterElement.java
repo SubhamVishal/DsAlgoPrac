@@ -1,5 +1,6 @@
 package com.test.dsa.util.stack;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,21 @@ public class NextGreaterElement {
             if (numIndexMap.containsKey(cur)) {
                 stack.add(cur);
             }
+        }
+        return result;
+    }
+
+    public int[] nextGreaterElement(int[] array) {
+        int[] result = new int[array.length];
+        Arrays.fill(result, -1);
+        Stack<Integer> stack = new Stack<>();
+        for (int idx = 0; idx < 2 * array.length; idx++) {
+            int circularIdx = idx % array.length;
+            while (stack.size() > 0 && array[stack.peek()] < array[circularIdx]) {
+                int top = stack.pop();
+                result[top] = array[circularIdx];
+            }
+           stack.push(circularIdx);
         }
         return result;
     }
