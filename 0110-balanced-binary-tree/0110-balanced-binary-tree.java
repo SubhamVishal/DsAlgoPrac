@@ -14,23 +14,35 @@
  * }
  */
 class Solution {
-   boolean isBal = true;
+  
     public boolean isBalanced(TreeNode root) {
-        height(root);
-        return isBal;
+        return height(root).isBalanced;
     }
-    public int height(TreeNode root){
+    public Pair height(TreeNode root){
         if(root == null){
-            return 0;
+            return new Pair(0, true);
         }
-        int left = height(root.left);
-        int right = height(root.right);
-        
-        int gap = Math.abs(left - right);
+        Pair left = height(root.left);
+        Pair right = height(root.right);
+        if(!left.isBalanced || !right.isBalanced) {
+            return new Pair(0, false);
+        }
+        int gap = Math.abs(left.height - right.height);
+        boolean isBal = true;
         if(gap > 1){
             isBal = false;
         }
-       int pew = Math.max(left, right) + 1;
-       return pew;
+       int pew = Math.max(left.height, right.height) + 1;
+       return new Pair(pew, isBal);
+    }
+    
+    static class Pair {
+        int height;
+        boolean isBalanced;
+        
+        public Pair(int height, boolean isBalanced) {
+            this.height = height;
+            this.isBalanced = isBalanced;
+        }
     }
 }
