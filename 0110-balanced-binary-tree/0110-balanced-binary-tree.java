@@ -27,13 +27,7 @@ class Solution {
         if(!left.isBalanced || !right.isBalanced) {
             return new Pair(0, false);
         }
-        int gap = Math.abs(left.height - right.height);
-        boolean isBal = true;
-        if(gap > 1){
-            isBal = false;
-        }
-       int pew = Math.max(left.height, right.height) + 1;
-       return new Pair(pew, isBal);
+       return new Pair(Math.max(left.height, right.height) + 1, Math.abs(left.height - right.height) <= 1);
     }
     
     static class Pair {
